@@ -3,8 +3,8 @@
     flags = {};
     package = {
       specVersion = "2.2";
-      identifier = { name = "test-with-packages"; version = "0.1.0.0"; };
-      license = "NONE";
+      identifier = { name = "pkga"; version = "0.1.0.0"; };
+      license = "LicenseRef-PublicDomain";
       copyright = "";
       maintainer = "rodney.lorrimar@iohk.io";
       author = "Rodney Lorrimar";
@@ -15,6 +15,6 @@
       buildType = "Simple";
       };
     components = {
-      "library" = { depends = [ (hsPkgs.base) (hsPkgs.lens) ]; };
+      "library" = { depends = [ (hsPkgs.base) (hsPkgs.lens) (hsPkgs.text) ]; };
       };
-    } // rec { src = (pkgs.lib).mkDefault ../.; }
+    } // rec { src = (pkgs.lib).mkDefault ../pkga; }

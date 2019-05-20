@@ -2,8 +2,8 @@
   {
     flags = {};
     package = {
-      specVersion = "1.10";
-      identifier = { name = "cabal-simple"; version = "0.1.0.0"; };
+      specVersion = "2.2";
+      identifier = { name = "pkgb"; version = "0.1.0.0"; };
       license = "LicenseRef-PublicDomain";
       copyright = "";
       maintainer = "rodney.lorrimar@iohk.io";
@@ -16,17 +16,24 @@
       };
     components = {
       "library" = {
-        depends = [ (hsPkgs.base) (hsPkgs.extra) (hsPkgs.safe) (hsPkgs.aeson) ];
+        depends = [
+          (hsPkgs.base)
+          (hsPkgs.pkga)
+          (hsPkgs.conduit)
+          (hsPkgs.conduit-extra)
+          (hsPkgs.directory)
+          (hsPkgs.resourcet)
+          ];
         };
       exes = {
-        "cabal-simple" = {
+        "pkgb" = {
           depends = [
             (hsPkgs.base)
-            (hsPkgs.cabal-simple)
-            (hsPkgs.extra)
+            (hsPkgs.pkgb)
             (hsPkgs.optparse-applicative)
+            (hsPkgs.text)
             ];
           };
         };
       };
-    } // rec { src = (pkgs.lib).mkDefault ../.; }
+    } // rec { src = (pkgs.lib).mkDefault ../pkgb; }
